@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
+import './Search.css'; // Neue CSS-Datei für die Suchergebnisse
 
 function Search() {
   const [searchParams] = useSearchParams();
-  const query = searchParams.get('query'); // Lese die Suchanfrage aus der URL
+  const query = searchParams.get('query');
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (query) {
       setLoading(true);
-      // Führe die API-Anfrage durch basierend auf der Suchanfrage
       fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`)
         .then(response => response.json())
         .then(data => {
-          setRecipes(data.meals || []); // Setze die Rezepte, wenn vorhanden
+          setRecipes(data.meals || []);
           setLoading(false);
         })
         .catch(error => {
@@ -24,17 +24,26 @@ function Search() {
     }
   }, [query]);
 
+  function shortenText(text, maxLength) {
+    if (text.length > maxLength) {
+      return text.slice(0, maxLength) + "...";
+    }
+    return text;
+  }
+
   return (
     <div className="search-results">
-      <h1>Suchergebnisse für {query}</h1>
-      {loading && <p>Wird geladen...</p>}
+      <h1>Suchergebnisse für: <span className="query">{query}</span></h1>
+      {loading && <p className="loading">Wird geladen...</p>}
       {recipes.length > 0 ? (
-        <ul>
-          {recipes.map((recipe) => (
-            <li key={recipe.idMeal}>
-              <h2>{recipe.strMeal}</h2>
-              <img src={recipe.strMealThumb} alt={recipe.strMeal} />
-              <Link to={`/recipe/${recipe.idMeal}`} className="view-details">Details ansehen</Link>
+        <ul className="recipe-list">
+          {recipes.map(recipe => (
+            <li key={recipe.idMeal} className="recipe-item">
+              <Link to={`/recipe/${recipe.idMeal}`} className="recipe-link">
+                <img src={recipe.strMealThumb} alt={recipe.strMeal} className="recipe-image" />
+                <h2 className="recipe-title">{shortenText(recipe.strMeal, 20)}</h2>
+              </Link>
+              <Link to={`/recipe/${recipe.idMeal}`} className="view-details">Details 🍲</Link>
             </li>
           ))}
         </ul>

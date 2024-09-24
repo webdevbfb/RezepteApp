@@ -1,0 +1,75 @@
+/* Stile für den Dark Mode Toggle Button */
+.dark-mode-toggle {
+    background-color: #ff6347; /* Helle Hintergrundfarbe */
+    color: white; /* Textfarbe */
+    border: none; /* Kein Rand */
+    border-radius: 50%; /* Runde Form */
+    font-size: 1em; /* Schriftgröße */
+    cursor: pointer; /* Zeigt einen Zeiger an, wenn darüber gefahren wird */
+    transition: background-color 0.3s, transform 0.3s; /* Sanfte Übergänge */
+    z-index: 1000; /* Hohe Z-Index für Sichtbarkeit */
+  }
+  
+  .dark-mode-toggle:hover {
+    background-color: #e5533d; /* Dunklere Farbe bei Hover */
+    transform: scale(1.1); /* Vergrößert den Button bei Hover */
+  }
+  
+  /* Dunkelmodus-Stile */
+  .dark-mode {
+    background-color: #121212; /* Dunkler Hintergrund */
+    color: #ffffff; /* Helle Textfarbe */
+  }
+  
+  .dark-mode .search-form button:hover {
+    background-color: #e67300;
+  }
+  
+  .dark-mode-toggle {
+    background-color: #333333;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-left: 15px;
+    border-radius: 5px;
+  }
+  
+  .dark-mode-toggle:hover {
+    background-color: #ffa500;
+  }
+  
+  /* Dark Mode Styles */
+  body.dark-mode {
+    background-color: #222222;
+    color: #eeeeee;
+  }
+  
+  .dark-mode header {
+    background-color: #333333;
+  }
+  
+  .dark-mode .navbar ul li a {
+    color: #eeeeee;
+  }
+  
+  .dark-mode .search-form input {
+    background-color: #444444;
+    color: white;
+    border: 1px solid #ff6347;
+  }
+  
+  .dark-mode .search-results ul li {
+    background: #444444;
+  }
+  
+  .dark-mode .search-form button {
+    background-color: #555555;
+  }
+  
+  .dark-mode .dark-mode-toggle {
+    background-color: #444444;
+  }
+  
+  .dark-mode .dark-mode-toggle:hover {
+    background-color: #ff6347;
+  }

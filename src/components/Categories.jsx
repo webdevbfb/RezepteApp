@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import './Categories.css'; // Neue CSS-Datei für Kategorien
 
 function Categories() {
   const [categories, setCategories] = useState([]);
@@ -13,17 +14,17 @@ function Categories() {
   return (
     <div className="categories">
       <h2>Kategorien</h2>
-      <ul>
+      <div className="categories-grid">
         {categories.map(category => (
-          <li key={category.idCategory}>
+          <div className="category-card" key={category.idCategory}>
             <Link to={`/category/${category.strCategory}`}>
               <img src={category.strCategoryThumb} alt={category.strCategory} />
               <h3>{category.strCategory}</h3>
               <p>{category.strCategoryDescription.slice(0, 100)}...</p>
             </Link>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

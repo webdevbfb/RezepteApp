@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import './Home.css'; // Neue CSS-Datei für die Startseite
 
 function Home() {
   const [recipes, setRecipes] = useState([]);
@@ -14,16 +15,16 @@ function Home() {
   return (
     <div className="home">
       <h2>Rezepte, die mit 'A' beginnen</h2>
-      <ul>
+      <div className="recipes-grid">
         {recipes.map(recipe => (
-          <li key={recipe.idMeal}>
+          <div className="recipe-card" key={recipe.idMeal}>
             <Link to={`/recipe/${recipe.idMeal}`}>
               <img src={recipe.strMealThumb} alt={recipe.strMeal} />
               <h3>{recipe.strMeal}</h3>
             </Link>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

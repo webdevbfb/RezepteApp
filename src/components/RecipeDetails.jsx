@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import './RecipeDetails.css'; // Neue CSS-Datei für Rezeptdetails
 
 function RecipeDetails() {
   const { id } = useParams();
@@ -16,9 +17,9 @@ function RecipeDetails() {
       {recipe ? (
         <>
           <h2>{recipe.strMeal}</h2>
-          <img src={recipe.strMealThumb} alt={recipe.strMeal} />
+          <img src={recipe.strMealThumb} alt={recipe.strMeal} className="recipe-image" />
           <h3>Zutaten</h3>
-          <ul>
+          <ul className="ingredients-list">
             {Object.keys(recipe)
               .filter(key => key.startsWith('strIngredient') && recipe[key])
               .map(key => (

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import './CategoryRecipes.css'; // Neue CSS-Datei für Kategorien-Rezepte
 
 function CategoryRecipes() {
   const { category } = useParams();
@@ -14,16 +15,16 @@ function CategoryRecipes() {
   return (
     <div className="category-recipes">
       <h2>Rezepte in der Kategorie: {category}</h2>
-      <ul>
+      <div className="recipe-list">
         {recipes.map(recipe => (
-          <li key={recipe.idMeal}>
+          <div className="recipe-card" key={recipe.idMeal}>
             <Link to={`/recipe/${recipe.idMeal}`}>
               <img src={recipe.strMealThumb} alt={recipe.strMeal} />
               <h3>{recipe.strMeal}</h3>
             </Link>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
