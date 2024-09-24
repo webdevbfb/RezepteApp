@@ -1,11 +1,11 @@
 import "./App.css"
 import React from 'react';
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
-import Home from './components/Home.jsx';
+import Home from './views/Home.jsx';
 import RecipeDetails from './components/RecipeDetails.jsx';
-import Categories from './components/Categories.jsx';
+import Categories from './views/Categories.jsx';
 import CategoryRecipes from './components/CategoryRecipes.jsx';
-import RandomRecipe from './components/RandomRecipe.jsx';
+import RandomRecipe from './views/RandomRecipe.jsx';
 import Search from './components/Search.jsx';
 import DarkModeToggle from './components/DarkModeToggle.jsx';
 

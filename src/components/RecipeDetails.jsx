@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './RecipeDetails.css'; // Neue CSS-Datei für Rezeptdetails
+import './DarkModeToggle.css'
 
 function RecipeDetails() {
   const { id } = useParams();
